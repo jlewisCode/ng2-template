@@ -1,0 +1,98 @@
+/* IZENI MIXINS
+---------------------------------------- */
+@import 'functions';
+
+
+// App-specific Typography
+@mixin sans {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+@mixin light { font-weight: 300; }
+@mixin normal { font-weight: 400; }
+@mixin medium { font-weight: 500; }
+@mixin bold { font-weight: 700; }
+
+
+
+//Responsive Typography
+@mixin font-range($min-size, $max-size, $min-width: 320, $max-width: 1440) {
+    $min-size-rem: rem-calc($min-size);
+    $max-size-rem: rem-calc($max-size);
+    $min-width-rem: rem-calc($min-width);
+    $max-width-rem: rem-calc($max-width);
+
+    font-size: calc(#{$min-size-rem} + (#{$max-size} - #{$min-size}) * (100vw - #{$min-width-rem}) / (#{$max-width} - #{$min-width}));
+
+    @include breakpoint($min-width down) {
+        font-size: #{$min-size-rem};
+    }
+    @include breakpoint($max-width) {
+        font-size: #{$max-size-rem};
+    }
+}
+
+//"Responsive" background images
+//Takes in path to the image, and the image extension separately
+@mixin responsive-background($path, $ext) {
+    $at1x_path: "#{$path}.#{$ext}";
+    $at2x_path: "#{$path}@2x.#{$ext}";
+    $at3x_path: "#{$path}@3x.#{$ext}";
+
+    background-image: url("#{$at1x_path}");
+
+    @media screen and (-webkit-min-device-pixel-ratio : 2),
+    screen and (min-resolution: 2dppx),
+    screen and (min-resolution: 192dpi) {
+        background-image: url("#{$at2x_path}");
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio : 3),
+    screen and (min-resolution: 3dppx),
+    screen and (min-resolution: 288dpi) {
+        background-image: url("#{$at3x_path}");
+    }
+}
+
+@mixin transition ($property: all, $duration: .2s, $timing-function: ease) {
+    transition: $property $duration $timing-function;
+}
+
+@mixin no-transition { transition: none; }
+
+@mixin columns($column-count: 3, $column-gap: 20px) {
+    column-count: $column-count;
+    column-gap: $column-gap;
+}
+
+@mixin no-shadow { box-shadow: 0 0 0 transparent; }
+
+/* Clearing */
+@mixin clear {
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+@mixin clearfix {
+    &:before, &:after {
+        content: '\0020';
+        display: block;
+        overflow: hidden;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        zoom: 1;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/* Restore default ul styling */
+@mixin disc {
+    list-style: disc outside;
+    margin-left: 20px;
+}

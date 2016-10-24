@@ -1,0 +1,25 @@
+/* TYPOGRAPHY (app-specific global rules--should only be imported once, in app.component.ts styleUrls)
+---------------------------------------- */
+@import 'mixins';
+@import 'variables';
+
+
+// General typographic rules
+html, body {
+    font-size: 100%; // 16px in most browsers. If you change this value, you'll want to change the $rem-base variable in _functions.scss
+    color: $gray;
+    @include sans;
+    @include normal;
+}
+
+
+h1 { font-size: 112px; }
+h2 { font-size: 56px; }
+h3 { font-size: 45px; }
+h4 { font-size: 34px; }
+h4 { font-size: 24px; }
+h6 { font-size: 20px; }
+
+
+// Icon fonts
+$icon-font-path: 'assets/fonts';

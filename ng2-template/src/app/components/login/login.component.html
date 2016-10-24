@@ -1,0 +1,25 @@
+<div class="login">
+  <h4 class="login__title">Login</h4>
+  <form class="login__form" *ngIf="!showReset" (submit)="login()">
+    <input class="login__input" type="email" name="username" id="username" [(ngModel)]="username" placeholder="Email Address">
+    <input class="login__input" type="password" name="password" id="password" [(ngModel)]="password" placeholder="Password">
+    <div class="login__error">{{error}}</div>
+    <button class="login__button login__button--green" type="submit" ng-disabled="!username || !password">
+        Login
+    </button>
+    <button class="login__button login__button--blue" type="button" (click)="showReset = !showReset">
+      Forgot Password?
+    </button>
+    <!-- <social-auth oauth="oauth" ng-repeat="oauth in oauth"></social-auth> -->
+  </form>
+
+  <form class="login__form" *ngIf="showReset" (submit)="resetPassword()">
+    <input class="login__input" type="email" id="email" name="username" placeholder="Email Address" [(ngModel)]="username">
+    <button type="submit" class="login__button login__button--green">
+      Reset Password
+    </button>
+    <button class="login__button login__button--blue" type="button" (click)="showReset = !showReset">
+      Remember Password?
+    </button>
+  </form>
+</div>

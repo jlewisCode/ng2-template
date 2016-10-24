@@ -1,0 +1,33 @@
+@import '../../../../scss/variables.scss';
+
+.toasts {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 100px;
+  width: 280px;
+}
+
+.toast {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-left: 12px solid $gray;
+  border-radius: 4px;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+
+  &--success {border-left-color: #5cb85c;}
+  &--error {border-left-color: #d9534f;}
+  &--warning {border-left-color: #f0ad4e;}
+  &--info {border-left-color: #0275d8;}
+
+  &__close {
+    padding-left: 6px;
+    font-size: 24px;
+    line-height: 0.6;
+  }
+}

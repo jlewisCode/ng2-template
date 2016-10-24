@@ -1,0 +1,72 @@
+/* IZENI DEFAULTS (should only be imported once, in app.component.ts styleUrls)
+---------------------------------------- */
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+}
+
+* { box-sizing: border-box; }
+
+/* ng-cloak -- TODO: update for Angular2 */
+[ng\:cloak], [ng-cloak], .ng-cloak { display: none !important; }
+
+/* List styling -- use 'disc' mixin to restore default styling */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove shadow and outline on focus */
+input[type=name], input[type=email], input[type=text], input[type=tel], input[type=submit],
+input[type=number], input[type=password], input[type=url], textarea, button, a, select {
+  &:focus {
+    outline: none !important;
+    box-shadow: 0,0,0,transparent;
+    text-decoration: none;
+  }
+}
+
+input:focus:invalid:focus, textarea:focus:invalid:focus, select:focus:invalid:focus {
+  outline: none;
+  box-shadow: 0,0,0,transparent;
+}
+
+/* images can't be wider than their containers */
+img { max-width: 100%; }
+
+/* tables inherit font size (some browsers set a default table font size) */
+table { font-size: inherit; }
+
+/* set cursor to pointer for specific elements -- TODO: update for Angular2 */
+a, [ui-sref], [ng-click] {
+  cursor: pointer;
+  outline: none;
+}
+
+/* IZENI CONTAINER */
+.izContainer {
+  width: 100%;
+  max-width: rem-calc(1440);
+  margin: 0 auto;
+  padding: 0 rem-calc(16);
+}
+
+/* IZENI SPINNER */
+.izSpinner:before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 8px solid #F0F0F0;
+  border-radius: 50%;
+  border-top-color: #808080;
+  border-bottom-color: #808080;
+  animation: izSpin 2s linear infinite;
+}
+@keyframes izSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
